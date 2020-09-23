@@ -311,14 +311,14 @@ jobs:
     docker:
       - image: ubuntu:focal
     steps:
-      - attach_workspace:
-          at: /
       - run:
           name: Update base image
           command: apt update -y
       - run:
           name: Install dependencies
-          command: DEBIAN_FRONTEND=noninteractive apt install cppcheck cmake build-essential git -y
+          command: DEBIAN_FRONTEND=noninteractive apt install cppcheck cmake build-essential git ca-certificates -y
+      - attach_workspace:
+          at: /
       - run:
           name: cppcheck
           command: |
